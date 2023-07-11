@@ -26,4 +26,4 @@
 !.gitignore
 
 # whitelist everything in ./addons/
-!addons/
+!addons/**

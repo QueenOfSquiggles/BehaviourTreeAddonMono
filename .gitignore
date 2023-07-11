@@ -1,10 +1,29 @@
+#
+# This Git Ignore file is intended for use with developing Godot Addons. 
+# Ideally this will be in a separate release branch that can be added as a submodule through git
+# The purpose of this is that addons actively being developed on GitHub can be readily 
+# updated, tested, and reverted to older commits as needed for the particular project.
+# Obviously this is an opt-in thing. But it could make godot addons much easier to use for more involved projects.
+#
+# For all who choose to follow this paradigm, the recommended branch name is `submod-addon`.
+#
+# For those less familiar with Git, you can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+# 
+# How this works is by merging into the `submod-addon` branch, anything outside of your addons folder 
+# is stripped and only the addon itself is included. This means you can have as much or as little testing 
+# systems outside in the main project folders
+# 
+# Another recommendation for this would be to place a copy of your README and LICENSE files into the addon folder, 
+# specifically the folder for your addon. This makes it easier to find your resources and how you allow the addon to be used
+# when the addon has been installed as a submodule.
+#
 
-# Godot-specific ignores
-.godot/
-export.cfg
-export_presets.cfg
+# changes from block-list to include list via blocking everything, then `!` includes a specific pattern or file
+*
+!*/
 
-# Mono-specific ignores
-.mono/
-*.sln
-*.csproj**
+# track this file
+!.gitignore
+
+# whitelist everything in ./addons/
+!addons/

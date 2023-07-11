@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfvxvbtx472h6"]
+
+[ext_resource type="Script" path="res://addons/squigglesbt/gdnodes/BehaviourTreeNode.cs" id="1_xfeah"]
+[ext_resource type="Resource" uid="uid://dvu28stus0u6o" path="res://test/TestBehaviourData.json" id="2_8oydd"]
+[ext_resource type="Script" path="res://addons/squigglesbt/gdnodes/BTDebugPanel.cs" id="3_cw10i"]
+
+[node name="TestingScene" type="Node"]
+
+[node name="BehaviourTreeNode" type="Node" parent="." node_paths=PackedStringArray("_Actor", "_DebuggingPanel")]
+script = ExtResource("1_xfeah")
+_Actor = NodePath("..")
+_Behaviour = ExtResource("2_8oydd")
+_DebuggingPanel = NodePath("BehaviourTreeDebugPanel")
+_BTProcessMode = 1
+_InitialBlackboard = {
+"dict_param1": true,
+"run_main_loop": true
+}
+
+[node name="BehaviourTreeDebugPanel" type="Node" parent="BehaviourTreeNode"]
+script = ExtResource("3_cw10i")

@@ -1,0 +1,35 @@
+{
+	"type": "Root",
+	"label": "RootNode",
+	"children" : [
+        {
+            "type":"Sequence",
+            "children" : [
+                {
+                    "type" : "BlackboardHas",
+                    "key" : "run_main_loop"
+                },
+                {
+                    "type" : "Debugging",
+                    "children": [
+                        {
+                            "type": "ActionWaitForSeconds",
+                            "seconds" : 0.1
+                        }
+                    ]
+                },
+                {
+                    "type" : "Limiter",
+                    "count" : 5,
+                    "children" : [
+                        {
+                            "type": "DebugPrint",
+                            "label": "Print five times, once per 3 seconds",
+                            "message": "Doing debug print"
+                        }
+                    ]
+                }
+            ]
+        },
+	]
+}

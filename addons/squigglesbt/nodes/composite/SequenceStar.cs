@@ -21,4 +21,9 @@ public class SequenceStar : Compositor
         }
         return FAILURE;
     }
+
+    protected override void RegisterParams()
+    {
+    }
+
 }

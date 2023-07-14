@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Godot;
 
-public class Debugging : Decorator
+public class BTDebug : Decorator
 {
     public override int Tick(Node actor, Blackboard blackboard)
     {
@@ -16,6 +15,12 @@ public class Debugging : Decorator
             2 => "Running",
             _ => "Error?"
         });
+        // GD.Print($"Debugging for node: {child.Label}");
         return value;
     }
+
+    protected override void RegisterParams()
+    {
+    }
+
 }

@@ -21,4 +21,9 @@ public class SelectStar : Compositor
         }
         return SUCCESS;
     }
+
+    protected override void RegisterParams()
+    {
+    }
+
 }

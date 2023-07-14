@@ -12,4 +12,9 @@ public class Sequence : Compositor
         }
         return SUCCESS;
     }
+
+    protected override void RegisterParams()
+    {
+    }
+
 }

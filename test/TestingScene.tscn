@@ -13,8 +13,7 @@ _Behaviour = ExtResource("2_8oydd")
 _DebuggingPanel = NodePath("BehaviourTreeDebugPanel")
 _BTProcessMode = 1
 _InitialBlackboard = {
-"dict_param1": true,
-"run_main_loop": true
+"test_param": true
 }
 
 [node name="BehaviourTreeDebugPanel" type="Node" parent="BehaviourTreeNode"]

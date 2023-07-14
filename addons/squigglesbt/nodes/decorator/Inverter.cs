@@ -14,4 +14,9 @@ public class Inverter : Decorator
             _ => ERROR
         };
     }
+
+    protected override void RegisterParams()
+    {
+    }
+
 }

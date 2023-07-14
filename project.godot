@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="BTJSON"
-run/main_scene="res://test/TestingScene.tscn"
+run/main_scene="res://addons/squigglesbt/editor/behaviour_tree_window.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.png"
+
+[display]
+
+window/subwindows/embed_subwindows=false
 
 [dotnet]
 

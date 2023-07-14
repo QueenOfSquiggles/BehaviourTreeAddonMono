@@ -19,6 +19,7 @@ public partial class BehaviourTreeNode : Node
     [Export] private BTStatus _CurrentBTStatus = BTStatus.SUCCESS;
 
     private Blackboard _Blackboard = new();
+
     public override void _Ready()
     {
         foreach (var entry in _InitialBlackboard)
@@ -28,6 +29,7 @@ public partial class BehaviourTreeNode : Node
         SetPhysicsProcess(_BTProcessMode == BTProcessMode.PHYSICS);
 
         _Behaviour.RebuildTree();
+        _Behaviour.PrintTree();
     }
 
     public override void _Process(double delta) => DoTick((float)delta);

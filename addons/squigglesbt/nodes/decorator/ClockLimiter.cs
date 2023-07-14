@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using Godot;
 
-public class TimeLimiter : Decorator
+public class ClockLimiter : Decorator
 {
-
-
-    private float counter = int.MaxValue;
+    private float counter = float.MaxValue;
 
 
     protected override void RegisterParams()
@@ -19,11 +17,14 @@ public class TimeLimiter : Decorator
         var p_counter = Params["seconds"].AsSingle();
         if (counter > p_counter) counter = p_counter;
 
-        if (counter <= 0) return FAILURE;
         counter -= bb.GetLocal("delta").AsSingle();
-        var result = Children[0].Tick(actor, bb);
-        if (result != RUNNING) counter = -1;
-        return result;
+        if (counter <= 0f)
+        {
+            var result = Children[0].Tick(actor, bb);
+            if (result != RUNNING) counter = p_counter;
+            return result;
+        }
+        return SUCCESS;
     }
 
     public override void LoadDebuggingValues(Blackboard bb)

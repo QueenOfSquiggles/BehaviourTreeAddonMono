@@ -9,4 +9,8 @@ public class Succeeder : Decorator
         Children[0].Tick(actor, blackboard);
         return SUCCESS;
     }
+    protected override void RegisterParams()
+    {
+    }
+
 }

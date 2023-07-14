@@ -8,7 +8,7 @@ public class Limiter : Decorator
     public override int Tick(Node actor, Blackboard bb)
     {
         if (Children.Count <= 0 || !Params.ContainsKey("count")) return FAILURE;
-        int p_counter = Params["counter"].AsInt32();
+        int p_counter = Params["count"].AsInt32();
         if (counter > p_counter) counter = p_counter;
 
         if (counter <= 0) return FAILURE;
@@ -22,4 +22,10 @@ public class Limiter : Decorator
     {
         bb.SetLocal($"debug.{Label}:counter", counter);
     }
+
+    protected override void RegisterParams()
+    {
+        Params["count"] = 5;
+    }
+
 }

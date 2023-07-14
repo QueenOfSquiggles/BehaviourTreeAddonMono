@@ -74,7 +74,7 @@ public partial class ImportBT : EditorImportPlugin
         _ => "Unrecognized Preset"
     };
     public override bool _GetOptionVisibility(string path, StringName optionName, Dictionary options) => true;
-    public override float _GetPriority() => 0.0f; // lower priority so other JSON files aren't imported as BT by default
+    public override float _GetPriority() => 1.0f; // lower priority so other JSON files aren't imported as BT by default
     public override int _GetImportOrder() => 0;
 
 

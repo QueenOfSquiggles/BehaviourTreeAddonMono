@@ -13,7 +13,7 @@ public partial class BehaviourTree : Resource
 
     public void RebuildTree()
     {
-        TreeRoot = (Root)LoadNodesRecursive(TreeRoot, JSONData);
+        TreeRoot = (Root)LoadNodesRecursive(new Root(), JSONData);
         TreeRoot.Label = Name;
     }
 
@@ -26,7 +26,9 @@ public partial class BehaviourTree : Resource
         {
             if (target.MaxChildren >= 0 && target.Children.Count >= target.MaxChildren)
             {
-                GD.PushWarning($"Child overflow for {target.Label}: skipping -> {dict}");
+                var msg = $"Child overflow for {target.Label}: skipping -> \n{Json.Stringify(data, "  ")}";
+                GD.PrintErr(msg);
+                GD.PushWarning(msg);
             }
             var n_node = CreateNodeFrom(dict);
             if (n_node is null) continue;
@@ -53,7 +55,7 @@ public partial class BehaviourTree : Resource
             {
                 var key = entry.Key.AsString();
                 if (key == "type" || key == "label" || key == "children") continue;
-                node.Params.Add(key, entry.Value);
+                node.Params[key] = entry.Value;
             }
         }
         return node;
@@ -73,5 +75,13 @@ public partial class BehaviourTree : Resource
         var result = pattern;
         for (int i = 1; i < count; i++) result += pattern;
         return result;
+    }
+
+    public void UpdateResource(string json_data)
+    {
+        using var file = FileAccess.Open(ResourcePath, FileAccess.ModeFlags.Write);
+        if (file is null) { GD.PrintErr($"Failed to write updated data to: {ResourcePath}"); return; }
+        file.StoreBuffer(json_data.ToUtf8Buffer());
+        GD.Print($"Wrote updated data out to: {ResourcePath}");
     }
 }

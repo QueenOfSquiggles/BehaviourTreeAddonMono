@@ -12,4 +12,9 @@ public class Select : Compositor
         }
         return FAILURE;
     }
+
+    protected override void RegisterParams()
+    {
+    }
+
 }

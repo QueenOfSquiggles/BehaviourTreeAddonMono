@@ -13,6 +13,7 @@ public abstract class BTNode
     {
         Label = label;
         MaxChildren = max_children;
+        RegisterParams();
     }
 
     public const int SUCCESS = 0;
@@ -20,9 +21,20 @@ public abstract class BTNode
     public const int RUNNING = 2;
     public const int ERROR = 3;
 
+    protected abstract void RegisterParams();
+
     public abstract int Tick(Node actor, Blackboard blackboard);
 
     public virtual void LoadDebuggingValues(Blackboard bb) { }
+
+    public Dictionary<string, Variant> GetKnownParams() => Params;
+
+    protected Variant GetParam(string key, Variant fallback)
+    {
+        if (Params.ContainsKey(key)) return Params[key];
+        return fallback;
+
+    }
 
 
 }

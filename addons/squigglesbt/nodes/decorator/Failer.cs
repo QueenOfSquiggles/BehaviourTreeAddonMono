@@ -9,4 +9,9 @@ public class Failer : Decorator
         Children[0].Tick(actor, blackboard);
         return FAILURE;
     }
+
+    protected override void RegisterParams()
+    {
+    }
+
 }

@@ -11,4 +11,7 @@ public class Root : BTNode
         return Children[0].Tick(actor, blackboard);
     }
 
+    protected override void RegisterParams()
+    {
+    }
 }
